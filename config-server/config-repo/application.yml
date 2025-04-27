@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://avg-db:5432/avg
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
