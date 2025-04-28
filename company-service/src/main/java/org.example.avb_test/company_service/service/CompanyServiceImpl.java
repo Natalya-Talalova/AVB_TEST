@@ -18,11 +18,15 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
 @Transactional
 public class CompanyServiceImpl implements CompanyService {
     private final CompanyRepository repository;
     private final CompanyMapper mapper;
+
+    public CompanyServiceImpl(CompanyRepository repository, CompanyMapper mapper) {
+        this.repository = repository;
+        this.mapper = mapper;
+    }
 
     @Override
     public CompanyResponceDto create(CompanyCreateDto companyDto) {

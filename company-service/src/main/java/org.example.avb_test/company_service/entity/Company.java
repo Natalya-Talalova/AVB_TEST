@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
 import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -31,6 +32,14 @@ public class Company {
     @CollectionTable(name = "company_employees", joinColumns = @JoinColumn(name = "company_id"))
     @Column(name = "employee_id")
     private List<Long> employeeId;
+
+    public List<Long> getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = Collections.singletonList(employeeId);
+    }
 
     @Override
     public final int hashCode() {

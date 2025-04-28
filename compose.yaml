@@ -4,29 +4,50 @@ services:
     environment:
       POSTGRES_DB: avg
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: ""
+      POSTGRES_HOST_AUTH_METHOD: trust
     ports:
       - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app-network
+  config-server:
+    image: config-server:latest
+    ports:
+      - "8888:8888"
+    networks:
+      - app-network
   user-service:
     image: user-service:latest
     ports:
       - "8081:8081"
     depends_on:
       - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/avg
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: ""
+    networks:
+      - app-network
   company-service:
     image: company-service:latest
     ports:
       - "8082:8082"
     depends_on:
       - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/avg
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: ""
+    networks:
+      - app-network
   eureka-server:
     image: eureka-server:latest
     ports:
       - "8761:8761"
-  config-server:
-    image: config-server:latest
-    ports:
-      - "8888:8888"
+    networks:
+      - app-network
   gateway:
     image: gateway:latest
     ports:
@@ -35,3 +56,14 @@ services:
       - eureka-server
       - user-service
       - company-service
+      - config-server
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    name: avb_test_app-network
+    driver: bridge
+
+volumes:
+  postgres-data:

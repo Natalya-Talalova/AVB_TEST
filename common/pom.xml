@@ -23,7 +23,6 @@
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
-            <!-- версия берётся из dependencyManagement родителя -->
         </dependency>
 
     </dependencies>

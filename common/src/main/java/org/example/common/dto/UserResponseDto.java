@@ -12,4 +12,8 @@ public class UserResponseDto implements Serializable {
     private String phoneNumber;
     private Long idCompany;
     private String companyName;
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
 }

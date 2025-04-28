@@ -18,13 +18,17 @@ import java.util.stream.Collectors;
 
 @Transactional
 @Service
-@AllArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepository repository;
     private final UserMapper mapper;
 
+    public UserServiceImpl(UserRepository repository, UserMapper mapper) {
+        this.repository = repository;
+        this.mapper = mapper;
+    }
+
     @Override
-    public List<org.example.common.dto.UserResponseDto> findAll() {
+    public List<UserResponseDto> findAll() {
         List<User> entities = repository.findAll();
         return entities.stream()
                 .map(this::toResponseDtoWithCompanyName)
@@ -32,7 +36,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public org.example.common.dto.UserResponseDto findById(Long id) {
+    public UserResponseDto findById(Long id) {
         User entity = repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundByIdException(User.class, id));
         return toResponseDtoWithCompanyName(entity);
@@ -40,7 +44,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public org.example.common.dto.UserResponseDto create(UserCreateDto userDto) {
+    public UserResponseDto create(UserCreateDto userDto) {
         User entity = mapper.toEntity(userDto);
         entity = repository.save(entity);
         return toResponseDtoWithCompanyName(entity);
@@ -48,7 +52,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public org.example.common.dto.UserResponseDto update(UserCreateDto userDto, Long id) {
+    public UserResponseDto update(UserCreateDto userDto, Long id) {
         User entity = repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundByIdException(User.class, id));
         mapper.update(userDto, entity);

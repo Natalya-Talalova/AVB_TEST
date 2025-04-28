@@ -1,7 +1,6 @@
 package org.example.avb_test.user_service.controller;
 
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
 import org.example.avb_test.user_service.dto.UserCreateDto;
 import org.example.common.dto.UserResponseDto;
 import org.example.avb_test.user_service.service.UserService;
@@ -13,9 +12,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
-@AllArgsConstructor
 public class UserController {
     private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping
     public ResponseEntity<List<UserResponseDto>> getAllUsers() {

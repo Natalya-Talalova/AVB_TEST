@@ -1,12 +1,11 @@
 spring:
+  config:
+    import: configserver:http://config-server:8888
   application:
     name: gateway
-  cloud:
-    config:
-      uri: http://localhost:8888
-      failFast: true
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka-server:8761/eureka/
+
