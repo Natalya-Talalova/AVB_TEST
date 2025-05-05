@@ -28,18 +28,11 @@ public class Company {
     @Column(name = "budget", nullable = false)
     private BigDecimal budget;
 
+    @Getter
     @ElementCollection
     @CollectionTable(name = "company_employees", joinColumns = @JoinColumn(name = "company_id"))
     @Column(name = "employee_id")
     private List<Long> employeeId;
-
-    public List<Long> getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(Long employeeId) {
-        this.employeeId = Collections.singletonList(employeeId);
-    }
 
     @Override
     public final int hashCode() {

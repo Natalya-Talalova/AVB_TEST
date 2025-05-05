@@ -2,6 +2,7 @@ package org.example.avb_test.user_service.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -21,5 +22,7 @@ public class UserCreateDto implements Serializable {
     @NotBlank(message = "Phone number should not be empty")
     private String phoneNumber;
 
+    @NotBlank(message = "Company id should not be empty")
+    @Positive(message = "Company id must be positive")
     private Long idCompany;
 }

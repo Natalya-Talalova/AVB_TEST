@@ -12,7 +12,7 @@
 
     <artifactId>common</artifactId>
     <name>common</name>
-    <description>Common module for shared DTOs</description>
+    <description>Common module for shared dependencies</description>
 
     <dependencies>
         <dependency>
@@ -23,6 +23,14 @@
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
         </dependency>
 
     </dependencies>

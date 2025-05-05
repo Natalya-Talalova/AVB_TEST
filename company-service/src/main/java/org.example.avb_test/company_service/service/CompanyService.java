@@ -1,10 +1,10 @@
 package org.example.avb_test.company_service.service;
 
 import org.example.avb_test.company_service.dto.CompanyCreateDto;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.example.common.dto.CompanyResponceDto;
-
-import java.util.List;
 
 @Service
 public interface CompanyService {
@@ -12,5 +12,5 @@ public interface CompanyService {
     CompanyResponceDto findById(Long id);
     CompanyResponceDto update(Long id, CompanyCreateDto companyDto);
     void delete(Long id);
-    List<CompanyResponceDto> findAll();
+    Page<CompanyResponceDto> findAll(Pageable pageable);
 }

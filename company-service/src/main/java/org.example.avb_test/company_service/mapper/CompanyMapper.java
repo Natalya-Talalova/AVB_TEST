@@ -3,14 +3,13 @@ package org.example.avb_test.company_service.mapper;
 import org.example.avb_test.company_service.dto.CompanyCreateDto;
 import org.example.avb_test.company_service.entity.Company;
 import org.mapstruct.Mapper;
-import org.mapstruct.MappingConstants;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 import org.example.common.dto.CompanyResponceDto;
 
 import java.util.List;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface CompanyMapper {
     Company toEntity(CompanyCreateDto companyCreateDto);
 

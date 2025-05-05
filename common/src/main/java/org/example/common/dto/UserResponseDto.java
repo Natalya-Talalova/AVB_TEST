@@ -1,9 +1,13 @@
 package org.example.common.dto;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 
+@Setter
+@Getter
 @Data
 public class UserResponseDto implements Serializable {
     private Long id;
@@ -12,8 +16,4 @@ public class UserResponseDto implements Serializable {
     private String phoneNumber;
     private Long idCompany;
     private String companyName;
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
 }

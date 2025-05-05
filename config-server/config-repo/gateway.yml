@@ -1,8 +1,8 @@
 spring:
   application:
+    config:
+      import: optional:configserver:http://config-server:8888
     name: gateway
-  config:
-    import: configserver:http://config-server:8888
   cloud:
     gateway:
       routes:
