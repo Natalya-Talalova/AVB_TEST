@@ -15,7 +15,6 @@
     <name>Config Server</name>
 
     <dependencies>
-        <!-- Spring Cloud Config Server -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>

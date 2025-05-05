@@ -1,6 +1,5 @@
 package org.example.common.dto;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;

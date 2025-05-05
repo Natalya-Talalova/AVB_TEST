@@ -114,11 +114,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.13.0</version> <!-- стабильная, проверенная версия -->
+                    <version>3.13.0</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
-
                             <annotationProcessorPaths>
                                 <path>
                                     <groupId>org.mapstruct</groupId>
@@ -131,7 +130,6 @@
                                     <version>${lombok.version}</version>
                                 </path>
                             </annotationProcessorPaths>
-
                 </configuration>
             </plugin>
         </plugins>
